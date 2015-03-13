@@ -20,4 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+<<<<<<< HEAD
+=======
+  spec.add_development_dependency "rspec"
+>>>>>>> 9431c355680738bc8508f831f9c319425f80861f
 end
