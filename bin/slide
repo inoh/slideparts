@@ -1,1 +1,18 @@
-puts "test"
+require 'optparse'
+require 'webrick'
+
+options = {}
+command = OptionParser.new do |opt|
+  opt.on("-p [ARGV]", "--port [ARGV]") do |v|
+    options[:port] = v
+  end
+end.parse!
+
+case command.first
+when "s", "server", "serve"
+  s = WEBrick::HTTPServer.new({
+    :DocumentRoot => '.',
+    :Port => options[:port] || 3000
+  })
+  s.start
+end
