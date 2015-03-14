@@ -28,7 +28,7 @@ module Slideparts
         when "new"
           project = commands[1]
           if project
-            FileUtils.cp(File.join(slide_template), project)
+            FileUtils.copy_entry(slide_template, project)
           else
             raise "not assign project"
           end
