@@ -1,5 +1,5 @@
 require "slideparts/version"
 
 module Slideparts
-  # Your code goes here...
+  autoload :Command, 'slideparts/command'
 end
