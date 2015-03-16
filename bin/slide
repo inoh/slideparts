@@ -3,3 +3,5 @@
 require 'slideparts'
 
 Slideparts::Command.execute
+
+# Slideparts::Command.subclasses.each { |c| c.init_with_program(p) }
