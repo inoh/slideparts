@@ -1,8 +1,3 @@
-require 'optparse'
-require 'webrick'
-require 'fileutils'
-require 'erb'
-
 module Slideparts
   class Command
 

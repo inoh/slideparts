@@ -5,6 +5,12 @@ def require_all(path)
   end
 end
 
+require 'optparse'
+require 'webrick'
+require 'fileutils'
+require 'erb'
+require 'haml'
+
 require "slideparts/version"
 
 module Slideparts
