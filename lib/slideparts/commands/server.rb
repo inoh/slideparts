@@ -1,20 +1,18 @@
 module Slideparts
   module Commands
     class Server < Command
-      attr_reader :syntax
-      def init_with_program(optparse)
-        @syntax = ["s", "serve", "server"]
-        optparse.on("-p [arg]", "--port [arg]") do |v|
-          @port  = v
+      class << self
+        def syntax
+          ["s", "serve", "server"]
         end
-      end
-      
-      def process
-        s = WEBrick::HTTPServer.new({
-          :DocumentRoot => '.',
-          :Port => @port || 3000
-        })
-        s.start
+
+        def process(args, options = {})
+          s = WEBrick::HTTPServer.new({
+            :DocumentRoot => '_slide',
+            :Port => options[:port] || 3000
+          })
+          s.start
+        end
       end
     end
   end

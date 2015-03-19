@@ -29,33 +29,9 @@ module Slideparts
           end
         end.parse!
 
-        case commands.first
-        when "s", "server", "serve"
-          s = WEBrick::HTTPServer.new({
-            :DocumentRoot => '_slide',
-            :Port => options[:port] || 3000
-          })
-          s.start
-        when "new"
-          project = commands[1]
-          if project
-            FileUtils.copy_entry(slide_template, project)
-          else
-            raise "not assign project"
-          end
-        when "b", "build"
-          Dir.mkdir "_slide" unless File.exist? "_slide"
-          Dir.glob("*").each do |filepath|
-            unless File.basename(filepath)[0] == "_"
-              if File.extname(filepath) == ".erb"
-                open("_slide/index.html", "w:utf-8") do |f|
-                  @slides = File.read(filepath)
-                  f.write ERB.new(File.read("_layouts/default.html.erb")).result(binding)
-                end
-              else
-                FileUtils.copy_entry(filepath, File.join("_slide", File.basename(filepath)))
-              end
-            end
+        subclasses.each do |subclass|
+          if subclass.syntax.include? commands.first
+            subclass.process(commands[1..-1], options)
           end
         end
       end
