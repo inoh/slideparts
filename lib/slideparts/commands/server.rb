@@ -7,11 +7,12 @@ module Slideparts
         end
 
         def process(args, options = {})
-          s = WEBrick::HTTPServer.new({
+          server = WEBrick::HTTPServer.new({
             :DocumentRoot => '_slide',
             :Port => options[:port] || 3000
           })
-          s.start
+          trap(:INT){server.shutdown}
+          server.start
         end
       end
     end
