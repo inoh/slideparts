@@ -1,6 +1,6 @@
 # Slideparts
 
-TODO: Write a gem description
+Slidepartsはスライドをコマンドベースで簡単に作成できます。
 
 ## Installation
 
@@ -20,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+create project:
+
+    $ slide new sample_slide
+    $ cd sample_slide
+    $ slide build
+    $ slide server
+    
+access:
+
+    http://localhost:3000/
 
 ## Contributing
 
