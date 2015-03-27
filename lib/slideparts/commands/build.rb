@@ -6,9 +6,13 @@ module Slideparts
           ["b", "build"]
         end
 
+        def options
+          {}
+        end
+
         def process(args, options = {})
           new_slide_path = File.expand_path("_slide", Dir.pwd)
-          
+
           Dir.mkdir new_slide_path unless File.exist? new_slide_path
           Dir.glob("*").each do |filepath|
             unless File.basename(filepath)[0] == "_"

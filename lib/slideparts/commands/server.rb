@@ -6,6 +6,12 @@ module Slideparts
           ["s", "serve", "server"]
         end
 
+        def options
+          {
+            port: ["-p [ARGV]", "--port [ARGV]"]
+          }
+        end
+
         def process(args, options = {})
           server = WEBrick::HTTPServer.new({
             :DocumentRoot => '_slide',

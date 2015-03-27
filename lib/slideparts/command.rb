@@ -19,8 +19,10 @@ module Slideparts
       def execute
         options = {}
         commands = OptionParser.new do |opt|
-          opt.on("-p [ARGV]", "--port [ARGV]") do |v|
-            options[:port] = v
+          subclasses.map(&:options).inject({}){|ret, option| ret.merge(option)}.each do |key, value|
+            opt.on(*value) do |v|
+              options[key] = v
+            end
           end
         end.parse!
 
@@ -31,6 +33,6 @@ module Slideparts
         end
       end
     end
-    
+
   end
 end

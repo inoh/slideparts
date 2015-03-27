@@ -6,6 +6,10 @@ module Slideparts
           ["new"]
         end
 
+        def options
+          {}
+        end
+
         def process(args, options = {})
           raise ArgumentError.new('You must specify a path.') if args.empty?
 
